@@ -1,0 +1,19 @@
+{
+  "build": {
+    "dockerfile": "../docker/Dockerfile"
+  },
+  "forwardPorts": [
+    3000
+  ],
+  "extensions": [
+    "ms-vscode.cmake-tools",
+    "eamodio.gitlens",
+    "albert.tabout",
+    "ms-vscode.cpptools",
+    "ms-python.python",
+    "github.vscode-pull-request-github"
+  ],
+  "mounts": [
+    "source=${localWorkspaceFolder}/../fprime-tools,target=/workspaces/fprime-tools,type=bind,consistency=cached"
+  ]
+}

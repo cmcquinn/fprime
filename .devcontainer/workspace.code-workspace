@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../fprime-tools"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.clang-format": "yaml",
+			"*.conf": "ini",
+			"type_traits": "cpp"
+		},
+		"C_Cpp.autocompleteAddParentheses": true,
+		"python.analysis.completeFunctionParens": true
+	}
+}
