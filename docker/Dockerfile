@@ -12,23 +12,43 @@
 # Build this with the --target fprime-base
 ####
 FROM ubuntu:18.04 AS fprime-base
+
+# Set noninteractive mode for apt installs in Dockerfile
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Adding fprime user, group, and password fprime
 RUN groupadd fprime && \
     groupmod -g 1001 fprime && \
     useradd -ms /bin/bash -g root -G sudo,fprime -p fprime fprime && \
-    usermod -u 1001 fprime && \
+    usermod -u 1001 fprime
+
 # Installing system components
-    apt-get update && apt-get install -y --no-install-recommends \
-    bash git build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind && \
-    mkdir -p /opt/ && chown fprime:fprime /opt/ && \
-    git clone --quiet https://github.com/raspberrypi/tools.git /opt/rpi/tools && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    pip3 install --no-cache-dir fprime-tools fprime-gds
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash git build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind sudo gdb
+
+# Install rpi tools
+RUN mkdir -p /opt/ && chown fprime:fprime /opt/ && \
+    git clone --quiet https://github.com/raspberrypi/tools.git /opt/rpi/tools
+
+# Install fprime-tools and fprime-gds
+RUN pip3 install --no-cache-dir fprime-tools fprime-gds
+
+# Cleanup unneeded apt files
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Allow sudo without password
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> \
+    /etc/sudoers
+
 # Change user and group of the virtual environment
 # Make fprime user default user
 ENV HOST fprime
 ENV USER fprime
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
+
+# Set normal apt frontend so the user can install packages from the command line
+ENV DEBIAN_FRONTEND=dialog
+
 USER fprime
 ENTRYPOINT ["/bin/bash"]
