@@ -24,7 +24,7 @@ RUN groupadd fprime && \
 
 # Installing system components
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    bash git build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind sudo gdb curl gpg
+    bash git build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind sudo gdb curl gpg wget zsh
 
 # Install github command line tools
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \
@@ -57,4 +57,9 @@ ENV LC_ALL C.UTF-8
 ENV DEBIAN_FRONTEND=dialog
 
 USER fprime
+
+# install zsh
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
+    -t agnoster -p git
+
 ENTRYPOINT ["/bin/bash"]
