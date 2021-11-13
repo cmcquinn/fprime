@@ -10,4 +10,5 @@ services:
       - "../fprime-tools:/workspaces/fprime-tools"
       - ".:/workspaces/fprime"
       - "~/.ssh:/home/fprime/.ssh"
+      - "~/.config/gh:/home/fprime/.config/gh"
     command: /bin/sh -c "while sleep 1000; do :; done"
