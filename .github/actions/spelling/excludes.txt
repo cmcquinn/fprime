@@ -37,6 +37,9 @@ ignore$
 \.xls$
 \.xlsx$
 \.xsd$
+\.vscode
+\.devcontainer
+Dockerfile
 ^Autocoders/Python/test/.*\.xml$
 ^Autocoders/Python/test/param1/test/ut/Tester\.hpp$
 ^config/PolyDbImplCfg\.hpp$
