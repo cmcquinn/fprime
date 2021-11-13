@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  fprime-dev:
+    image: nasafprime/fprime-base
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - "../fprime-tools:/workspaces/fprime-tools"
+      - ".:/workspaces/fprime"
+      - "$HOME/.ssh:/home/fprime/.ssh"
+    command: /bin/sh -c "while sleep 1000; do :; done"

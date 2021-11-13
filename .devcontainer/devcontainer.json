@@ -1,10 +1,5 @@
 {
-  "build": {
-    "dockerfile": "../docker/Dockerfile"
-  },
-  "forwardPorts": [
-    3000
-  ],
+  "dockerComposeFile": "../docker-compose.yml",
   "extensions": [
     "ms-vscode.cmake-tools",
     "eamodio.gitlens",
@@ -13,7 +8,13 @@
     "ms-python.python",
     "github.vscode-pull-request-github"
   ],
-  "mounts": [
-    "source=${localWorkspaceFolder}/../fprime-tools,target=/workspaces/fprime-tools,type=bind,consistency=cached"
+  // "mounts": [
+  //   "source=${localWorkspaceFolder}/../fprime-tools,target=/workspaces/fprime-tools,type=bind,consistency=cached"
+  // ]
+  "workspaceFolder": "/workspaces/fprime",
+  "service": "fprime-dev",
+  "remoteUser": "fprime",
+  "runArgs": [
+      "--privileged"
   ]
 }
