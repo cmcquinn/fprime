@@ -24,7 +24,7 @@ RUN groupadd fprime && \
 
 # Installing system components
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    bash git build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind sudo gdb curl gpg wget zsh
+    bash git ssh build-essential cmake time python3 python3-setuptools python3-pip python3-venv valgrind sudo gdb curl gpg wget
 
 # Install github command line tools
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \
@@ -38,9 +38,6 @@ RUN mkdir -p /opt/ && chown fprime:fprime /opt/ && \
 
 # Install fprime-tools and fprime-gds
 RUN pip3 install --no-cache-dir fprime-tools fprime-gds
-
-# Cleanup unneeded apt files
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Allow sudo without password
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> \
@@ -61,3 +58,6 @@ USER fprime
 # install zsh
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
     -t agnoster -p git
+
+# Cleanup unneeded apt files
+RUN sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

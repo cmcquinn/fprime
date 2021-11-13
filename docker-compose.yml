@@ -9,5 +9,5 @@ services:
     volumes:
       - "../fprime-tools:/workspaces/fprime-tools"
       - ".:/workspaces/fprime"
-      - "$HOME/.ssh:/home/fprime/.ssh"
+      - "~/.ssh:/home/fprime/.ssh"
     command: /bin/sh -c "while sleep 1000; do :; done"
