@@ -12,7 +12,7 @@
   //   "source=${localWorkspaceFolder}/../fprime-tools,target=/workspaces/fprime-tools,type=bind,consistency=cached"
   // ]
   "workspaceFolder": "/workspaces/fprime",
-  "service": "fprime-dev",
+  "service": "fprime-devcontainer",
   "remoteUser": "fprime",
   "runArgs": [
       "--privileged"

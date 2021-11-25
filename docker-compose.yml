@@ -1,14 +1,14 @@
 version: '3.4'
 
 services:
-  fprime-dev:
-    image: nasafprime/fprime-base
+  fprime-devcontainer:
+    image: nasafprime/fprime-devcontainer
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./.devcontainer/Dockerfile
     volumes:
       - "../fprime-tools:/workspaces/fprime-tools"
       - ".:/workspaces/fprime"
       - "~/.ssh:/home/fprime/.ssh"
       - "~/.config/gh:/home/fprime/.config/gh"
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    command: -c "while sleep 1000; do :; done"
