@@ -39,6 +39,7 @@ ignore$
 \.xsd$
 \.vscode
 \.devcontainer
+docker-compose.yml
 Dockerfile
 ^Autocoders/Python/test/.*\.xml$
 ^Autocoders/Python/test/param1/test/ut/Tester\.hpp$

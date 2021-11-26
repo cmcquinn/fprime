@@ -6,7 +6,7 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    ssh sudo gdb curl gpg wget
+    ssh sudo gdb curl gpg wget nano
 
 # Install github command line tools
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \

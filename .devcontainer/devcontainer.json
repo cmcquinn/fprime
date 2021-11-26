@@ -8,9 +8,6 @@
     "ms-python.python",
     "github.vscode-pull-request-github"
   ],
-  // "mounts": [
-  //   "source=${localWorkspaceFolder}/../fprime-tools,target=/workspaces/fprime-tools,type=bind,consistency=cached"
-  // ]
   "workspaceFolder": "/workspaces/fprime",
   "service": "fprime-devcontainer",
   "remoteUser": "fprime",
